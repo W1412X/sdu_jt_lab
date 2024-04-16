@@ -1,0 +1,3 @@
+/home/wangxv/Files/hw/jw/lab1/fou/build/CMakeFiles/rebuild_cache.dir
+/home/wangxv/Files/hw/jw/lab1/fou/build/CMakeFiles/edit_cache.dir
+/home/wangxv/Files/hw/jw/lab1/fou/build/CMakeFiles/fou.dir

@@ -1,0 +1,7 @@
+cmake_minimum_required (VERSION 2.8)
+project (area)
+find_package(Eigen3 REQUIRED)
+find_package(OpenCV REQUIRED)
+include_directories("/home/wangxv/Files/hw/jw/eigen-3.4.0")
+add_executable(area area.cpp)
+target_link_libraries(area PRIVATE ${OpenCV_LIBS})

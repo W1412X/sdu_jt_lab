@@ -1,0 +1,3 @@
+/home/wangxv/Files/hw/jt/lab4/lab4/build/CMakeFiles/rebuild_cache.dir
+/home/wangxv/Files/hw/jt/lab4/lab4/build/CMakeFiles/edit_cache.dir
+/home/wangxv/Files/hw/jt/lab4/lab4/build/CMakeFiles/solve.dir

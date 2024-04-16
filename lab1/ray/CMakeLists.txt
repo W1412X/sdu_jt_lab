@@ -1,0 +1,7 @@
+cmake_minimum_required (VERSION 2.8)
+project (ray)
+find_package(Eigen3 REQUIRED)
+find_package(OpenCV REQUIRED)
+include_directories("/home/wangxv/Files/hw/jw/eigen-3.4.0")
+add_executable(ray ray.cpp)
+target_link_libraries(ray PRIVATE ${OpenCV_LIBS})

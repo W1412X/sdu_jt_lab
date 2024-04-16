@@ -1,0 +1,3 @@
+/home/wangxv/Files/hw/jt/lab2/实验2/code/build/CMakeFiles/rebuild_cache.dir
+/home/wangxv/Files/hw/jt/lab2/实验2/code/build/CMakeFiles/edit_cache.dir
+/home/wangxv/Files/hw/jt/lab2/实验2/code/build/CMakeFiles/Rasterizer.dir
