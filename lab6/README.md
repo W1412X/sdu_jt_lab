@@ -1,3 +1,6 @@
+# 山东大学计算机图形学实验6
+## [Github地址](https://github.com/W1412X/sdu_jt_lab/tree/main/lab6)
+
 > **本文只显示公式，并未做推导**
 - 本文的所有代码均基于以下四篇文章中的算法实现
 
@@ -5,8 +8,8 @@
 [**Blinn-Phong原理与推导参考文章**](https://zhuanlan.zhihu.com/p/442023993)  
 [**双线性插值原理与推导参考文章**](https://blog.csdn.net/eurus_/article/details/102755898)  
 [**坐标插值与透视矫正原理与推导参考文章**](https://zhuanlan.zhihu.com/p/448575965)  
-[**bump phong原理与推导参考文章**](https://blog.csdn.net/yjr3426619/article/details/81022781)  
-[****]
+[**bump phong原理与推导参考文章**](https://blog.csdn.net/yjr3426619/article/details/81022781)    
+[**代码phong函数部分的对于`view_dir`向量的处理参考文章**](https://blog.csdn.net/ycrsw/article/details/123984206)
 
 ## Github 文件结构
 - Code文件夹下为实验要求的原始实现
