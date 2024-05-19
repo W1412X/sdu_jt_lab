@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/wangxv/Files/hw/jt/lab6/source/Code_1/Texture.cpp" "/home/wangxv/Files/hw/jt/lab6/source/Code_1/build/CMakeFiles/Rasterizer.dir/Texture.cpp.o"
-  "/home/wangxv/Files/hw/jt/lab6/source/Code_1/Triangle.cpp" "/home/wangxv/Files/hw/jt/lab6/source/Code_1/build/CMakeFiles/Rasterizer.dir/Triangle.cpp.o"
-  "/home/wangxv/Files/hw/jt/lab6/source/Code_1/main.cpp" "/home/wangxv/Files/hw/jt/lab6/source/Code_1/build/CMakeFiles/Rasterizer.dir/main.cpp.o"
-  "/home/wangxv/Files/hw/jt/lab6/source/Code_1/rasterizer.cpp" "/home/wangxv/Files/hw/jt/lab6/source/Code_1/build/CMakeFiles/Rasterizer.dir/rasterizer.cpp.o"
+  "/home/wangxv/Files/hw/jt/github/lab6/code_rock/Texture.cpp" "/home/wangxv/Files/hw/jt/github/lab6/code_rock/build/CMakeFiles/Rasterizer.dir/Texture.cpp.o"
+  "/home/wangxv/Files/hw/jt/github/lab6/code_rock/Triangle.cpp" "/home/wangxv/Files/hw/jt/github/lab6/code_rock/build/CMakeFiles/Rasterizer.dir/Triangle.cpp.o"
+  "/home/wangxv/Files/hw/jt/github/lab6/code_rock/main.cpp" "/home/wangxv/Files/hw/jt/github/lab6/code_rock/build/CMakeFiles/Rasterizer.dir/main.cpp.o"
+  "/home/wangxv/Files/hw/jt/github/lab6/code_rock/rasterizer.cpp" "/home/wangxv/Files/hw/jt/github/lab6/code_rock/build/CMakeFiles/Rasterizer.dir/rasterizer.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

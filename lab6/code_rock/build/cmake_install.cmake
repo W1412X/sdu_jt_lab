@@ -1,4 +1,4 @@
-# Install script for directory: /home/wangxv/Files/hw/jt/lab6/source/Code_1
+# Install script for directory: /home/wangxv/Files/hw/jt/github/lab6/code_rock
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/wangxv/Files/hw/jt/lab6/source/Code_1/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/wangxv/Files/hw/jt/github/lab6/code_rock/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

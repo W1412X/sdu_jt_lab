@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=gnu++17
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/wangxv/Files/hw/jt/lab6/source/Code_1/./include -isystem /usr/include/opencv4 
+CXX_INCLUDES = -I/home/wangxv/Files/hw/jt/github/lab6/code_rock/./include -isystem /usr/include/opencv4 
 
