@@ -19,7 +19,7 @@ public:
         while(tmp!=0){
             std::cout<<tmp<<std::endl;
             cv::Mat image_data;
-            image_data = cv::imread("/home/wangxv/Files/hw/jt/github/lab7/mipmap_imgs/"+std::to_string(tmp)+".png");
+            image_data = cv::imread("../../mipmap_imgs/"+std::to_string(tmp)+".png");
             cv::cvtColor(image_data, image_data, cv::COLOR_RGB2BGR);
             width = image_data.cols;
             height = image_data.rows;
