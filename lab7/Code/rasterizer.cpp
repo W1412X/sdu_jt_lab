@@ -262,6 +262,7 @@ void rst::rasterizer::rasterize_triangle(const Triangle &t, const std::array<Eig
     auto v = t.toVector4();
     Vector3f color;
     float alpha, beta, gamma, lmin = INT_MAX, rmax = INT_MIN, tmax = INT_MIN, bmin = INT_MAX, id;
+    float alpha1, beta1, gamma1,alpha2,beta2,gamma2;
     for (auto &k : v){ //找到可以包围这个三角形的矩形坐标
         lmin = int(std::min(lmin, k.x()));
         rmax = std::max(rmax, k.x());
@@ -278,6 +279,22 @@ void rst::rasterizer::rasterize_triangle(const Triangle &t, const std::array<Eig
             { // 如果像素在三角形内
                 // If so, use the following code to get the interpolated z value.
                 std::tie(alpha, beta, gamma) = computeBarycentric2D(i + 0.5, j + 0.5, t.v);//计算得到重心
+                //if(insideTriangle(i + 1.5, j + 0.5, t.v))
+                Triangle t1=t;
+                t1.v[0].x()++;
+                t1.v[1].x()++;
+                t1.v[2].x()++;
+                    std::tie(alpha1, beta1, gamma1) = computeBarycentric2D(i + 1.5, j + 0.5, t1.v);//计算得到重心
+                //else
+                    //alpha1=alpha,beta1=beta,gamma1=gamma;
+                //if(insideTriangle(i + 0.5, j + 1.5, t.v))
+                    t1=t;
+                    t1.v[0].y()++;
+                    t1.v[1].y()++;
+                    t1.v[2].y()++;
+                    std::tie(alpha2, beta2, gamma2) = computeBarycentric2D(i + 0.5, j + 1.5, t.v);//计算得到重心
+                //else
+                //     alpha2=alpha,beta2=beta,gamma2=gamma;
                 float w_reciprocal = 1.0 / (alpha / v[0].w() + beta / v[1].w() + gamma / v[2].w());
                 float z_interpolated = alpha * v[0].z() / v[0].w() + beta * v[1].z() / v[1].w() + gamma * v[2].z() / v[2].w();
                 z_interpolated *= w_reciprocal;
@@ -288,12 +305,13 @@ void rst::rasterizer::rasterize_triangle(const Triangle &t, const std::array<Eig
                     auto interpolated_normal = interpolate(alpha, beta, gamma, t.normal[0], t.normal[1], t.normal[2], 1).normalized();                            // 法向量插值
                     auto interpolated_texcoords = interpolate(alpha, beta, gamma, t.tex_coords[0], t.tex_coords[1], t.tex_coords[2], 1);                          // 纹理坐标插值
                     auto interpolated_shadingcoords = interpolate(alpha, beta, gamma, view_pos[0], view_pos[1], view_pos[2], 1);                                  // 着色点坐标插值
-                    float u_right = interpolated_texcoords.x() + 1.0f / width;                                                                                    // width为纹理宽度的逆，实际应用中需要根据纹理尺寸确定
-                    float v_top = interpolated_texcoords.y() - 1.0f / height; // height为纹理高度的逆，同理
+                    auto u_right = interpolate(alpha1, beta1, gamma1, t.tex_coords[0], t.tex_coords[1], t.tex_coords[2], 1);                                                                                   // width为纹理宽度的逆，实际应用中需要根据纹理尺寸确定
+                   auto v_top = interpolate(alpha2, beta2, gamma2, t.tex_coords[0], t.tex_coords[1], t.tex_coords[2], 1); 
                     // 构造fragment_shader_payload对象时传入u_right和v_top
                     fragment_shader_payload payload(interpolated_color, interpolated_normal.normalized(),
-                                                    interpolated_texcoords, texture ? &*texture : nullptr,
-                                                    u_right, v_top);                                                                                              // 将插值属性传入fragment_shader_payload
+                                                    interpolated_texcoords, texture ? &*texture : nullptr);
+                    payload.u_right=u_right;
+                    payload.v_top=v_top;                                                                                              // 将插值属性传入fragment_shader_payload
                     payload.view_pos = interpolated_shadingcoords;                                                                                                // 传入原顶点坐标
                     depth_buf[id] = -z_interpolated;
                     frame_buf[id] = fragment_shader(payload); // 使用shader计算颜色

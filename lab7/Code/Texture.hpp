@@ -34,28 +34,30 @@ public:
 
     Eigen::Vector3f getColor(float u, float v,int level=0)
     {
-        auto u_img = u * width;
-        auto v_img = (1 - v) * height;
+        std::cout<<"u:"<<u<<std::endl;
+        auto u_img = u * mip_list[level].cols;
+        auto v_img = (1 - v) * mip_list[level].rows;
         auto color = mip_list[level].at<cv::Vec3b>(v_img, u_img);
+        std::cout<<mip_list[level].rows<<':'<<u_img<<' '<<mip_list[level].cols<<':'<<v_img<<std::endl;
         return Eigen::Vector3f(color[0], color[1], color[2]);
     }
     Eigen::Vector3f getColorBilinear(float u, float v,int level=0){//传入纹理宽高比 u:v
-        float w1 = int(u * width), h1 = int(v * height);//左下角的像素
+        float w1 = int(u * mip_list[level].rows), h1 = int(v * mip_list[level].rows);//左下角的像素
         float w2 = w1 + 1, h2 = h1;//右下
         float w3 = w1, h3 = h1 + 1;//左上
         float w4 = w1 + 1, h4 = h1 + 1;//右上
         Eigen::Vector3f color1, color2, color3, color4, color5, color6, color;
-        color1 = getColor(w1 / width, h1 / height,level);//左下
-        color2 = getColor(w2 / width, h2 / height,level);//右下
-        color3 = getColor(w3 / width, h3 / height,level);//左上
-        color4 = getColor(w4 / width, h4 / height,level);//右上
+        color1 = getColor(w1 / mip_list[level].rows, h1 / mip_list[level].rows,level);//左下
+        color2 = getColor(w2 / mip_list[level].rows, h2 / mip_list[level].rows,level);//右下
+        color3 = getColor(w3 / mip_list[level].rows, h3 / mip_list[level].rows,level);//左上
+        color4 = getColor(w4 / mip_list[level].rows, h4 / mip_list[level].rows,level);//右上
         /*
         左上，右上插值得到一个
         左下，右下得到一个
         */
-        color5 = color1 + (color2 - color1) * (u * width - w1);//下
-        color6 = color3 + (color4 - color3) * (u * width - w1);//上
-        color = color5 + (color6 - color5) * (v * height - h1);//在y方向插值
+        color5 = color1 + (color2 - color1) * (u * mip_list[level].rows - w1);//下
+        color6 = color3 + (color4 - color3) * (u * mip_list[level].rows - w1);//上
+        color = color5 + (color6 - color5) * (v * mip_list[level].rows - h1);//在y方向插值
         return color;//结果
     }
     Eigen::Vector3f getColorTrilinear(float u, float v, float level)

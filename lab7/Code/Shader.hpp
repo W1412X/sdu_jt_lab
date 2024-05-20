@@ -12,20 +12,16 @@ struct fragment_shader_payload
 {
     fragment_shader_payload()
 
-        : texture(nullptr), u_right(0.f), v_top(0.f) {}
+        : texture(nullptr) {}
 
 
     fragment_shader_payload(const Eigen::Vector3f& col, const Eigen::Vector3f& nor,
 
-                       const Eigen::Vector2f& tc, Texture* tex,
+                       const Eigen::Vector2f& tc, Texture* tex)
 
-                       float u_right_val, float v_top_val)
-
-        : color(col), normal(nor), tex_coords(tc), texture(tex),
-
-          u_right(u_right_val), v_top(v_top_val) {}
-    float u_right; // 新增: 右侧纹理坐标
-    float v_top;  // 新增: 顶部纹理坐标
+        : color(col), normal(nor), tex_coords(tc), texture(tex){}
+    Eigen::Vector2f u_right; // 新增: 右侧纹理坐标
+    Eigen::Vector2f v_top;  // 新增: 顶部纹理坐标
     Eigen::Vector3f view_pos;
     Eigen::Vector3f color;
     Eigen::Vector3f normal;

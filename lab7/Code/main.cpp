@@ -82,9 +82,9 @@ struct light{
     Eigen::Vector3f position;
     Eigen::Vector3f intensity;//rgb
 };
-float CalculateLevelForTrilinear(float u, float v, float u_right, float v_top) {
-    std::cout<<u<<' '<<v<<' '<<u_right<<' '<<v_top<<std::endl;
-    float L = std::max(std::sqrt(pow(u - u_right,2)+pow(u-v_top,2)), std::sqrt(pow(v - u_right,2)+pow(v-v_top,2)));
+float CalculateLevelForTrilinear(float u, float v, const Eigen::Vector2f&u_right, const Eigen::Vector2f&v_top) {
+    std::cout<<u<<' '<<v<<' '<<u_right[0]*1024<<' '<<u_right[1]*1024<<' '<<v_top[0]*1024<<' '<<v_top[1]*1024<<std::endl;
+    float L = std::max(std::sqrt(pow(u - std::fabs(u_right[0])*1024,2)+pow(v-std::fabs(u_right[1])*1024,2)), std::sqrt(pow(u - std::fabs(v_top[0])*1024,2)+pow(v-std::fabs(v_top[1])*1024,2)));
     std::cout<<L<<std::endl;
     float D = L > 1 ? std::log2(L) : 0; 
     return std::floor(D);
@@ -93,7 +93,7 @@ Eigen::Vector3f texture_fragment_shader(const fragment_shader_payload& payload)
 {//基于纹理的计算   
     Eigen::Vector3f return_color = {0, 0, 0};
     if (payload.texture) {
-        float level = CalculateLevelForTrilinear(payload.tex_coords.x()*1024, payload.tex_coords.y()*1024, payload.u_right*1024,payload.v_top*1024);
+        float level = CalculateLevelForTrilinear(payload.tex_coords.x()*1024, payload.tex_coords.y()*1024, payload.u_right,payload.v_top);
         std::cout<<"selected level : "<<level<<std::endl;
         return_color = payload.texture->getColorTrilinear(payload.tex_coords.x(), payload.tex_coords.y(), level);
     }
