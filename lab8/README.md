@@ -33,21 +33,21 @@ $$
   - `dir` 方向向量
 -  Moller-Trumbore 算法
   -  向量 S 表示从三角形的一个顶点到射线起点ori的向量  
-  $ S=ori $
+  $$ S=ori $$
   - 三角形两个边(E1,E2)的向量  
-  $ E1=v1-v0 $  
-  $ E2=v2-v0 $
+  $$ E1=v1-v0 $$  
+  $$ E2=v2-v0 $$
   - 计算向量 dir 与 E2 的叉乘结果 S1  ,  用于构造平面法向量相关的计算  
-  $ S1 = crossProduct(dir, E2) $  
+  $$ S1 = crossProduct(dir, E2) $$  
   - 计算向量 S 与 E1 的叉乘结果 S2  , 用于后续求解 t, u, v  
-  $ S2 = crossProduct(S, E1) $  
+  $$ S2 = crossProduct(S, E1) $$  
   - 计算 S1 与 E1 的点乘，避免后边的除零错误  
-  $ S1E1 = dotProduct(S1, E1) $  
+  $$ S1E1 = dotProduct(S1, E1) $$  
   - 射线与三角形平面的交点对应的参数 t  
-  $ t = dotProduct(S2, E2) / S1E1 $  
+  $$ t = dotProduct(S2, E2) / S1E1 $$  
   - 计算 b1 和 b2，它们分别代表交点在 E1 方向和射线方向上的权重，用于确定交点在三角形内的 UV 坐标  
-  $ b1 = dotProduct(S1, S) / S1E1 $  
-  $ b2 = dotProduct(S2, dir) / S1E1 $  
+  $$ b1 = dotProduct(S1, S) / S1E1 $$  
+  $$ b2 = dotProduct(S2, dir) / S1E1 $$  
 ### **判断**
   - 如果 t>=0，交点在射线正方向  (1)
   - 如果b1 >= 0, b2 >= 0 且 (1 - b1 - b2) >= 0 ，交点位于三角形内部    (2)
