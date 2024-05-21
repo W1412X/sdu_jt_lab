@@ -1,0 +1,3 @@
+/home/wangxv/Files/hw/jt/lab8/Code/build/CMakeFiles/rebuild_cache.dir
+/home/wangxv/Files/hw/jt/lab8/Code/build/CMakeFiles/edit_cache.dir
+/home/wangxv/Files/hw/jt/lab8/Code/build/CMakeFiles/RayTracing.dir
